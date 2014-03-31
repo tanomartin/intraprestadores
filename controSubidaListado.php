@@ -1,8 +1,7 @@
-<? session_save_path("sesiones");
+<?php session_save_path("sesiones");
 session_start();
-if($_SESSION['nrpresta'] == null)
-	header ("Location: http://www.ospim.com.ar/prestadores/caducaSes.php");
-	
+if($_SESSION['nrpresta'] == NULL)
+	header ("Location: loginPresta.php?err=2");
 include ("conexion.php");
 ?>
 
@@ -24,13 +23,14 @@ body {
 -->
 </style>
 </head>
-<?
+<?php
 	$error=0;
-	$datos = array_values($HTTP_POST_VARS);
+	$datos = array_values($_POST);
 	$pres=$datos[0];
 	$mes=$datos[1];
 	$anio=$datos[2];
-	$arc=$archivo_name;
+	$arc=$_FILES['archivo']['name'];
+	$archivo=$_FILES['archivo']['tmp_name'];
 	$preArc=(int)substr($arc,0,3);
 	$tipArc=substr($arc,3,1);
 	$mesArc=(int)substr($arc,4,2);
@@ -46,7 +46,7 @@ body {
     <tr>
       <td width="133"><em><strong>Mes</strong></em></td>
       <td width="234"><div align="center">
-        <?
+        <?php
 	  	if ($mes == 0) {
 			print("ERROR");
 			$error=1;
@@ -61,7 +61,7 @@ body {
       <td><em><strong>A&ntilde;o</strong></em></td>
       <td> 
 	    <div align="center">
-	      <?
+	      <?php
 	  	if ($anio == 0) {
 			print("ERROR");
 			$error=1;
@@ -76,7 +76,7 @@ body {
       <td><em><strong>Archivo</strong></em></td>
       <td>
 	  	<div align="center">
-	  	  <?
+	  	  <?php
 		  	//para mostrar el prestador...
 		  	$arcOK=0;
 			if ($preArc!=$pres) {
@@ -101,7 +101,7 @@ body {
 			}
 			if ($arcOK == 0) {
 				$sql = "select * from usuarios where codigo=$pres";
-				$result = mysql_db_query("uv0471_prestador",$sql,$db);
+				$result = mysql_query($sql,$db);
 				$row = mysql_fetch_array($result);
 				print($row['nombre']);
 			}
@@ -111,21 +111,19 @@ body {
     </tr>
   </table>
   <p>
-  <?
+  <?php
   	if ($error==1) {
 		print ("SE PRODUJO UN ERROR - NO SE HA SUBIDO EL ARCHIVO<br />");
 	} else {
-		$destino=$pres."C23".$pres."/".$archivo_name;
-		copy($archivo,$destino);
+		$destino=$pres."C23".$pres."/".$arc;
+		if (!copy($archivo,$destino)) {
+			print ("SE PRODUJO UN ERROR AL COPIAR EL ARCHIVO - NO SE HA SUBIDO EL ARCHIVO<br />");
+		}
 	}
 	
   ?>
   </p>
-  <p>
-    <?
- 	 print ("<font face=Verdana size=3><b><font color=#CF8B34><a href=subidaListados.php>"."VOLVER"."</font></b></font>");
-    ?>
-  </p>
+  	<p>	<input type="button" name="salir" value="VOLVER" onclick="location.href='subidaListados.php'"/></p>
 </div>
 </body>
 </html>

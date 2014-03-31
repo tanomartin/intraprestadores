@@ -26,7 +26,6 @@ body {
 </head>
 
 <body>
-<form id="form1" name="form1" method="post" action="loginPresta.php">
 <h3 align="center" class="Estilo3"><span class="Estilo5">SISTEMA DE CONSULTA PARA PRESTADORES </span></h3>
 <p align="center"><img src="ospimw.jpg" width="308" height="350" /></p>
 <p align="center" class="Estilo7" style="word-spacing: 0; margin-top: 0; margin-bottom: 0"><font face="Verdana">&iexcl;La
@@ -35,9 +34,7 @@ body {
   instantes recibir&aacute; en la direcci&oacute;n de mail registrada previamente el dato de
   su contrase&ntilde;a.</font><font face="Verdana"></font></p>
 <div align="center"><b><font face="Verdana" size="2">
-  <input name="back" type="submit" id="back" value="VOLVER" />
+  <input name="back" type="button" id="back" value="VOLVER" onClick="location.href='loginPresta.php'" />
 </font></b></div>
-<p align="center">&nbsp;</p>
-</form>
 </body>
 </html>

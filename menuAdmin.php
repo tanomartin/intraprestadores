@@ -1,7 +1,7 @@
-<? session_save_path("sesiones");
+<?php session_save_path("sesiones");
 session_start();
 if(($_SESSION['nrpresta'] != "999") and ($_SESSION['nrpresta'] != "000"))
-	header ("Location: http://www.ospim.com.ar/prestadores/caducaSes.php");
+	header ("Location: loginPresta.php?err=2");
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -50,18 +50,17 @@ body {
     </tr>
   </table>
   <p>
-  <?
- 	 include ("conexion.php");
+  <?php
+ 	include ("conexion.php");
  	if ($_SESSION['nrpresta'] == "999") {
 		$pres = $_SESSION['nrpresta'];
 		$hoy = date("Ymd"); 
 		$hora = date("H:i:s"); 
 		$sql9 = "UPDATE usuarios SET fecuac= '$hoy', horuac = '$hora' where codigo = $pres"; 
-		$result9 = mysql_db_query("uv0471_prestador",$sql9,$db);
-		
-		print ("<font face=Verdana size=3><b><font color=#CF8B34><a href=logout.php>"."SALIR"."</font></b></font>");	
-	}
-	?>
+		$result9 = mysql_query($sql9,$db);
+		?>
+		<input type="button" name="salir" value="Salir" onclick="location.href='logout.php'"/>
+<?php	}?>
 </p>
 </div>
 </body>

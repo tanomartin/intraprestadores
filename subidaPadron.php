@@ -1,8 +1,7 @@
-<? session_save_path("sesiones");
+<?php session_save_path("sesiones");
 session_start();
-if($_SESSION['nrpresta'] == null)
-	header ("Location: http://www.ospim.com.ar/prestadores/caducaSes.php");
-	
+if($_SESSION['nrpresta'] == NULL)
+	header ("Location: loginPresta.php?err=2");
 include ("conexion.php");
 ?>
 
@@ -44,9 +43,9 @@ body {
       <p align="center">
 	  
 	  Prestador: <select name="prestador" id="prestador"> 
-	  <?
+	  <?php
 	  		$sql = "select * from usuarios";
-			$result = mysql_db_query("uv0471_prestador",$sql,$db);
+			$result = mysql_query($sql,$db);
 			while($linea = mysql_fetch_array($result)){ 
 				//para que no aparezcan sistemas y admi como opcion del desplegable...
 				if (($linea['codigo']!="000") and ($linea['codigo']!="999")){
@@ -78,18 +77,17 @@ body {
                       <option value="2011">2011</option>
                       <option value="2012">2012</option>
                       <option value="2013">2013</option>
+					  <option value="2014">2014</option>
                     </select> 
 	  
 	  </p>
       <p align="center">
         <input type="file" name="archivo" />
       </p>
-      <p align="center">Numero Total de Titulares</p>
-      <p align="center"><strong><font size="2" face="Arial, Helvetica, sans-serif">
+      <p align="center">Numero Total de Titulares<strong><font size="2" face="Arial, Helvetica, sans-serif">
         <input name="titulares" type="text" style="text-transform: uppercase" value="0" size="4"/>
       </font></strong></p>
-      <p align="center">Numero Total de Familiares: </p>
-      <p align="center"><strong><font size="2" face="Arial, Helvetica, sans-serif">
+      <p align="center">Numero Total de Familiares:<strong><font size="2" face="Arial, Helvetica, sans-serif">
         <input name="familiares" type="text" style="text-transform: uppercase" value="0" size="4"/>
       </font></strong></p>
       <p align="center">
