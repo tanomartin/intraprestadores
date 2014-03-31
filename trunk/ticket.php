@@ -1,7 +1,7 @@
-<? session_save_path("sesiones");
+<?php session_save_path("sesiones");
 session_start();
-if($_SESSION['nrpresta'] != $pres) {
-	header ("Location: http://www.ospim.com.ar/prestadores/caducaSes.php");
+if($_SESSION['nrpresta'] == NULL) {
+	header ("Location: loginPresta.php?err=2");
 }
 ?>
 
@@ -13,15 +13,20 @@ if($_SESSION['nrpresta'] != $pres) {
 </head>
 
 <body>
-<p><?
+<p>
+<?php
 include ("conexion.php");
+$mes = $_GET['mes'];
+$anio = $_GET['anio'];
+$fecd = $_GET['fecd'];
+$hord = $_GET['hord'];
 $sql = "select * from usuarios where codigo = '$pres'";
-$result = mysql_db_query("uv0471_prestador",$sql,$db);
+$result = mysql_query($sql,$db);
 $row=mysql_fetch_array($result); 
 $prestador=$row['nombre'];
 
 $sql1 = "select * from descarga where codigo = '$pres' and mespad='$mes' and anopad='$anio' and estdes='S';";
-$result1 = mysql_db_query("uv0471_prestador",$sql1,$db);
+$result1 = mysql_query($sql1,$db);
 $cant = mysql_num_rows($result1);
 $cantProx = $cant+1;
 ?>
@@ -36,11 +41,11 @@ $cantProx = $cant+1;
   </tr>
   <tr>
     <td height="70">
-	<form id="form1" name="form1" method="post" action="descarga.php?pres=<? echo $pres."&mes=".$mes."&anio=".$anio ?>">
-      <p>PRESTADOR: <? print($prestador); ?></p>
-      <p>PERIODO DEL PADRON DESCARGADO: <? print($mes.'/'.$anio); ?></p>
-      <p>FECHA Y HORA DE DESCARGA: <? print($fecd.' a las '.$hord. ' hrs.');  ?></p>
-      <p>NUMERO DE DESCARGA: <? print($cantProx); ?></p>
+	<form id="form1" name="form1" method="post" action="descarga.php?pres=<?php echo $pres."&mes=".$mes."&anio=".$anio ?>">
+      <p>PRESTADOR: <?php print($prestador); ?></p>
+      <p>PERIODO DEL PADRON DESCARGADO: <?php print($mes.'/'.$anio); ?></p>
+      <p>FECHA Y HORA DE DESCARGA: <?php print($fecd.' a las '.$hord. ' hrs.');  ?></p>
+      <p>NUMERO DE DESCARGA: <?php print($cantProx); ?></p>
       <p align="center">
         <input name="submit2" type="submit" value="Descargar Padron" />
       </p>
@@ -50,7 +55,5 @@ $cantProx = $cant+1;
 	</form>   
   </tr>
 </table>
-<p>
-</p>
 </body>
 </html>

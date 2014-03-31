@@ -1,7 +1,7 @@
-<? session_save_path("sesiones");
+<?php session_save_path("sesiones");
 session_start();
-if($_SESSION['nrpresta'] == null)
-	header ("Location: http://www.ospim.com.ar/prestadores/caducaSes.php");
+if($_SESSION['nrpresta'] == NULL)
+	header ("Location: loginPresta.php?err=2");
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -29,11 +29,11 @@ body {
 </style>
 </head>
 
-<?
+<?php
 include ("conexion.php");
-
+$presta = $_GET['presta'];
 $sql = "select * from usuarios where codigo = $presta";
-$result = mysql_db_query("uv0471_prestador",$sql,$db);
+$result = mysql_query($sql,$db);
 $row=mysql_fetch_array($result); 
 
 //me da el mes que corresponde al año anterior...
@@ -110,7 +110,7 @@ for ( $i = $inicio ; $i <= $fin ; $i++) {
 <div align="center"><span class="Estilo3">INFORMACION DE PRESTADORES </span> </div>
 <div align="center">
   <p><img src="ospimw.jpg" width="158" height="179" />  </p>
-  <p><span class="Estilo5">Prestador <? print($row['nombre']);  ?> </span></p>
+  <p><span class="Estilo5">Prestador <?php print($row['nombre']);  ?> </span></p>
   <p class="Estilo3">Informacion de Subida y Descarga de Padrones - Capitas </p>
   <table width="1053" border="1" align="center">
     <tr>
@@ -122,11 +122,10 @@ for ( $i = $inicio ; $i <= $fin ; $i++) {
 	  <td width="165"><div align="center"><strong>Total de Beneficiarios</strong></div></td>
 	  <td width="165"><div align="center"><strong>Benef. por Deleg. </strong></div></td>
     </tr>
-    <?
+    <?php
 for ($i=$inicio;$i<=$fin;$i++){
-	
 	$sql2 = "select * from subida where codigo = $presta and mespad = $mesArc[$i] and anopad = $anioArc[$i]"  ;
-	$result2 = mysql_db_query("uv0471_prestador",$sql2,$db);
+	$result2 = mysql_query($sql2,$db);
 	$row2=mysql_fetch_array($result2); 
 	if (mysql_num_rows($result2)==0) {
 		$subida="NO SUBIDO";
@@ -135,7 +134,7 @@ for ($i=$inicio;$i<=$fin;$i++){
 	}
 	
 	$sql3 = "select * from descarga where codigo = $presta and mespad = $mesArc[$i] and anopad = $anioArc[$i] and estdes='S' order by codigo, anopad, mespad, nrodes LIMIT 1";
-	$result3 = mysql_db_query("uv0471_prestador",$sql3,$db);
+	$result3 = mysql_query($sql3,$db);
 	$row3=mysql_fetch_array($result3); 
 	if (mysql_num_rows($result3)==0) {
 		$descarga="NUNCA";
