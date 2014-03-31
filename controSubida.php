@@ -138,6 +138,7 @@ body {
 		print ("SE PRODUJO UN ERROR - NO SE HA SUBIDO EL ARCHIVO<br />");
 	} else {
 		$destino=$pres."C23".$pres."/".$arc;
+		print($destino."<br>");
 		if (copy($archivo,$destino)) {
 			$fecSub=date("Y-m-d");
 			$horSub=date("H:i:s");
