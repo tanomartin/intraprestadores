@@ -16,7 +16,8 @@ if ($cant > 0) {
 		header ('location:menuAdmin.php');	
 	} 
 	if ($nrpresta == "000") {
-		header ('location:menuSistemas.php');
+		//header ('location:menuSistemas.php');
+		header ('location:menuAdmin.php');
 	}
 	if (($nrpresta != "000") and ($nrpresta != "999")) {
 		header ('location:menuPresta.php');
