@@ -11,12 +11,6 @@ if($_SESSION['nrpresta'] == NULL)
 <title>Menu Prestadores</title>
 <style type="text/css">
 <!--
-.Estilo2 {
-	font-family: Arial, Helvetica, sans-serif;
-	font-weight: bold;
-	font-size: 12px;
-	color: #0000FF;
-}
 .Estilo3 {
 	font-family: "Courier New", Courier, monospace;
 	font-weight: bold;
@@ -25,6 +19,7 @@ if($_SESSION['nrpresta'] == NULL)
 body {
 	background-color: #CCCCCC;
 }
+.Estilo4 {color: #0000CC}
 -->
 </style>
 </head>
@@ -117,6 +112,12 @@ for ( $i = $inicio ; $i <= $fin ; $i++) {
 <div align="center">
   <p><img src="ospimw.jpg" width="158" height="179" />  </p>
   <p class="Estilo3">Padrones</p>
+  <table width="765" border="1">
+    <tr>
+      <td width="755"><div align="justify"><span class="Estilo3"><span class="Estilo4">NOTA:</span> Comunicamos que a partir de los padrones correspondientes a <span class="Estilo4">Noviembre de 2014 (11/2014)</span> en el archivo excel que contiene la informaci&oacute;n de beneficiarios titulares la columna &quot;L&quot; (c&oacute;digo de empresa) ya no contendr&aacute; esa informaci&oacute;n. Para identificar la empresa donde trabajan los beneficiarios titulares deber&aacute; utilizar s&oacute;lo el C.U.I.T.</span></div></td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
   <table width="681" border="1" align="center">
     <tr>
       <td width="126"><div align="center"><strong>Per&iacute;odo</strong></div></td>
