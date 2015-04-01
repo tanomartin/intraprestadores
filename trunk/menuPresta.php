@@ -19,7 +19,8 @@ if($_SESSION['nrpresta'] == NULL)
 body {
 	background-color: #CCCCCC;
 }
-.Estilo4 {color: #0000CC}
+.Estilo5 {color: #990000}
+.Estilo6 {font-family: "Courier New", Courier, monospace; font-weight: bold; color: #000000; font-size: 24px; }
 -->
 </style>
 </head>
@@ -111,10 +112,14 @@ for ( $i = $inicio ; $i <= $fin ; $i++) {
 <div align="center"><span class="Estilo3">MENU PRESTADORES </span> </div>
 <div align="center">
   <p><img src="ospimw.jpg" width="158" height="179" />  </p>
-  <p class="Estilo3">Padrones</p>
-  <table width="765" border="1">
+  <p class="Estilo6">Padrones</p>
+  <table width="900" border="1">
     <tr>
-      <td width="755"><div align="justify"><span class="Estilo3"><span class="Estilo4">NOTA:</span> Comunicamos que a partir de los padrones correspondientes a <span class="Estilo4">Noviembre de 2014 (11/2014)</span> en el archivo excel que contiene la informaci&oacute;n de beneficiarios titulares la columna &quot;L&quot; (c&oacute;digo de empresa) ya no contendr&aacute; esa informaci&oacute;n. Para identificar la empresa donde trabajan los beneficiarios titulares deber&aacute; utilizar s&oacute;lo el C.U.I.T.</span></div></td>
+      <td width="890"><div align="justify"><span class="Estilo3"><span class="Estilo5">NOTA 1:</span> Comunicamos que a partir de los padrones correspondientes a <span class="Estilo5">Noviembre de 2014 (11/2014)</span> en el archivo excel que contiene la informaci&oacute;n de beneficiarios titulares la columna &quot;L&quot; (c&oacute;digo de empresa) ya no contendr&aacute; esa informaci&oacute;n. Para identificar la empresa donde trabajan los beneficiarios titulares deber&aacute; utilizar s&oacute;lo el C.U.I.T.</span></div></td>
+    </tr>
+    <tr>
+      <td><p align="justify"><span class="Estilo3"><span class="Estilo5">NOTA 2: </span>Comunicamos que a partir de los padrones correspondintes a <span class="Estilo5">Febrero de 2015 (02/2015)</span> en el archivo de excel que contiene la informaci&oacute;n de beneficiarios titulares en la columna &quot;I&quot; (provincia) se ha modificado el dato conteniendo un c&oacute;digo en lugar del nombre. De igual manera en el archivo de excel que contiene la informaci&oacute;n de beneficiarios familiares en la columna &quot;B&quot; (tipo de familiar) se ha modificado el dato conteniendo un c&oacute;digo en lugar de la descripci&oacute;n.</span></p>
+      <p align="justify" class="Estilo3">En el siguiente Link usted podr&aacute; descargar un archivo comprimido que contiene ambas tablas codificadoras: <a href="codificadoras.zip">Tablas Codificadoras </a></p></td>
     </tr>
   </table>
   <p>&nbsp;</p>
