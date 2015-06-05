@@ -1,0 +1,1 @@
+Se utiliza para la descarga de padrones
