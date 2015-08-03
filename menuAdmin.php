@@ -48,6 +48,10 @@ body {
       <td><div align="center" class="Estilo6"><a href="javascript:void(window.open('prestaData.php?presta=007'))" class="Estilo5">Instituto Dorrego </a></div></td>
       <td><div align="center" class="Estilo6"><a href="javascript:void(window.open('prestaData.php?presta=008'))" class="Estilo5">Clinica de Im&aacute;genes Neuquen</a></div></td>
     </tr>
+	<tr>
+	  <td><div align="center" class="Estilo6"><a href="javascript:void(window.open('prestaData.php?presta=009'))" class="Estilo5">SPM Salud </a></div></td>
+      <td><div align="center" class="Estilo6"></div></td>
+	</tr>
   </table>
   <p>
   <?php
