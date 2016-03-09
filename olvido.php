@@ -1,75 +1,58 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>Recordatorio Contrase&ntilde;a</title>
-<style type="text/css">
-<!--
-.Estilo3 {font-family: Papyrus;
-	font-weight: bold;
-	color: #999999;
-}
-body {
-	background-color: #CCCCCC;
-}
-.Estilo5 {font-family: "Courier New", Courier, monospace;
-	font-weight: bold;
-	color: #000000;
-}
-.Estilo6 {
-	color: #FF0000;
-	font-weight: bold;
-}
-.Estilo7 {font-family: Papyrus; font-weight: bold; color: #000000; }
--->
-</style>
+<title>O.S.P.I.M. - Intranet Prestadores</title>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,maximum-scale=1" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+	integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+<link href='https://fonts.googleapis.com/css?family=Roboto:500,700'
+	rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="include/js/jquery-2.2.0.min.js"></script>
+<script type="text/javascript" src="include/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-<h3 align="center" class="Estilo3"><span class="Estilo5">SISTEMA DE CONSULTA PARA PRESTADORES </span></h3>
-<p align="center" class="Estilo3"><img src="ospimw.jpg" width="308" height="350" /></p>
-<p align="center" class="Estilo3"><b><font face="Verdana" size="2">
-  <input name="back" type="submit" id="back" value="VOLVER" onclick= "location.href='loginPresta.php'"/>
-</font></b></p>
-<form method="POST" action="verificadorMail.php">
-
-<table width="100%" border="0">
-  <tr>
-    <td colspan="2" align="right"><div align="center">
-      <p class="Estilo7">RECORDATORIO DE CONTRASE&Ntilde;A</p>
-      <p><?php  
-	  if (isset($_GET['err'])) {
-		$err = $_GET['err'];
-		if ($err == 1) {
-			print("<p align='center' class='Estilo6'>DATOS INCORRECTOS</p>");
-		} 
-	   }
-	 ?></p>
-    </div></td>
-    </tr>
-  <tr>
-    <td width="30%" align="right"><p align="right"><font face="Verdana" size="2"><b>E-mail Registrado:&nbsp;</b></font></p></td>
-    <td width="30%"><p align="left">
-      <input name="email" type="text" id="email" style="background-color: #FFFFFF" size="20" />
-    </p></td>
-    </tr>
-  <tr>
-    <td width="30%" height="30" align="right"><p style="word-spacing: 0; margin-top: 0; margin-bottom: 0" align="right"><b><font face="Verdana" size="2">Usuario</font><font face="Verdana" size="2">:&nbsp;</font></b></p>        </td>
-    <td width="30%"><p align="left">
-      <input name="user" type="text" id="user" style="background-color: #FFFFFF" size="20" />
-    </p></td>
-    </tr>
-  <tr>
-    <td colspan="2" align="right"></td>
-    </tr>
-  <tr>
-    <td height="35" colspan="2" align="right"><div align="center"><b><font face="Verdana" size="2">
-      <input name="back2" type="submit" id="back2" value="ENVIAR" />
-    </font></b></div></td>
-    </tr>
-</table>
-
-</form>
-
+	<div class="container">
+		<div class="row" align="center">
+			<form class="form-signin mg-btm">
+				<h3 class="heading-desc">Recupero Contrase&ntilde;a</h3>
+				<div class="main">
+					<div class="input-group">
+						<span class="input-group-addon"><i
+							class="glyphicon glyphicon-user"></i></span> <input type="text"
+							required="required" class="form-control" placeholder="Usuario">
+					</div>
+					<div class="input-group">
+						<span class="input-group-addon"><i
+							class="glyphicon glyphicon-envelope"></i></span> <input
+							type="password" class="form-control" required="required"
+							placeholder="E-mail">
+					</div>
+					<div class="row">
+						<div class="col-xs-8 col-md-8" style="text-align: left;">
+							<button type="button" id="volver" class="btn btn-large pull-left">Volver</button>
+						</div>
+						<div class="col-xs-4 col-md-4 pull-right">
+							<button type="submit" class="btn btn-large btn-success pull-right">Recuperar</button>
+						</div>
+					</div>
+				</div>
+				<span class="clearfix"></span>
+			</form>
+		</div>
+	</div>
 </body>
 </html>
+
+<script  type="text/javascript">
+	$("#volver").click(function() {
+		window.location.href = "index.php";
+	});
+</script>
