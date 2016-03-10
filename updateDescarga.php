@@ -12,11 +12,8 @@ else {
 	//cargo el registro de descarga...
 	$sql1 = "INSERT INTO descarga(codigo,mespad,anopad,fecdes,hordes,estdes) VALUES ('".trim($pres)."','".$mes."','".trim($anio)."','".trim($fecdes)."','".trim($hordes)."','N')";
 	$result1 = mysql_query($sql1,$db);
-	
 	//cambio el estado en la tabla subida...
 	$sql2 = "UPDATE subida set status='S' where codigo=$pres and mespad=$mes and anopad=$anio;";
-	$result2 = mysql_query($sql2,$db);
-	
+	$result2 = mysql_query($sql2,$db);	
 	header ("Location: ticket.php?pres=$pres&mes=$mes&anio=$anio&fecd=$fecdes&hord=$hordes");
-	
 }

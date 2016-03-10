@@ -15,7 +15,6 @@
 	rel='stylesheet' type='text/css'>
 <script type="text/javascript" src="include/js/jquery-2.2.0.min.js"></script>
 <script type="text/javascript" src="include/js/bootstrap.min.js"></script>
-
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>

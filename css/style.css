@@ -86,3 +86,10 @@ body {
 	background-color: #CCCCCC;
 }
 
+.errorRecupero {
+	color: red;
+}
+
+.okRecupero {
+	color: green;
+} 

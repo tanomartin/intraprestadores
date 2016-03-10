@@ -35,7 +35,7 @@ $cantProx = $cant+1;
   <tr>
     <td width="513" height="36"><div align="center">
       <p><em>TICKET DE DESCARGA DE PADRONES </em></p>
-      <p><img src="LogoSinFondo.jpg" width="107" height="89" /></p>
+      <p><img src="images/LogoSinFondo.jpg" width="107" height="89" /></p>
       <p><strong>O.S.P.I.M - Obra Social del Personal de la Industria Maderera </strong></p>
     </div></td>
   </tr>
