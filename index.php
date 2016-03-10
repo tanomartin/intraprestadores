@@ -61,13 +61,7 @@
 		var pass = $('#pass').val();
 		$.post("verificaID.php", {usuario : usuario, pass: pass}, function(data) {
 			if (data == 1) {
-				var redirec = "";
-				if ((usuario != "000") && (usuario != "999")) {
-					redirec = "menuPresta.php";
-				} else {
-					redirec = "menuAdmin.php";
-				}
-				window.location = redirec;
+				window.location = "menuPresta.php";
 			} else {
 				$('#errorIngreso').html("Error en usuario y/o contrase&ntilde;a");
 				$("#submit").prop('disabled', false);
