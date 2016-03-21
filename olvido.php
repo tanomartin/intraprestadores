@@ -6,9 +6,7 @@
 <meta name="viewport"
 	content="width=device-width,initial-scale=1,maximum-scale=1" />
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-	integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
-	crossorigin="anonymous">
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 <link href='https://fonts.googleapis.com/css?family=Roboto:500,700'
@@ -50,7 +48,7 @@
 		</div>
 	</div>
 </body>
-</html>
+
 
 <script  type="text/javascript">
 	$("#volver").click(function() {
@@ -77,3 +75,6 @@
 	});
 	
 </script>
+
+</html>
+

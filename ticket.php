@@ -52,7 +52,8 @@ $cantProx = $cant+1;
       <p align="center">
         <input type="button" name="imprimir" value="Imprimir" onclick="window.print();" />
       </p>
-	</form>   
+	</form>
+	</td>   
   </tr>
 </table>
 </body>
