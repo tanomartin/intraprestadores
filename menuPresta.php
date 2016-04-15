@@ -2,7 +2,7 @@
 session_save_path ( "sesiones" );
 session_start ();
 if ($_SESSION ['nrpresta'] == NULL)
-	header ( "Location: loginPresta.php?err=2" );
+	header ( "Location: index.php" );
 
 include ("conexion.php");
 // esto se saca de la sesion....
