@@ -16,6 +16,7 @@ if($_SESSION['nrpresta'] == NULL) {
 <p>
 <?php
 include ("conexion.php");
+$pres = $_SESSION['nrpresta'];
 $mes = $_GET['mes'];
 $anio = $_GET['anio'];
 $fecd = $_GET['fecd'];

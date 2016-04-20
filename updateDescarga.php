@@ -2,9 +2,9 @@
 session_start();
 if($_SESSION['nrpresta'] == NULL) {
 	header ("Location: index.php");
-}
-else {
+} else {
 	include ("conexion.php");
+	$pres = $_SESSION['nrpresta'];
 	$fecdes=date("Y-m-d");
 	$hordes=date("H:i:s");
 	$mes = $_GET['mes'];

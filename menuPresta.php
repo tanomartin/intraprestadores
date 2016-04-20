@@ -5,16 +5,7 @@ if ($_SESSION ['nrpresta'] == NULL)
 	header ( "Location: index.php" );
 
 include ("conexion.php");
-// esto se saca de la sesion....
-if (($_SESSION ['nrpresta'] == "000") || ($_SESSION ['nrpresta'] == "999")) {
-	$nrpres = $_GET ['presta'];
-} else {
-	$nrpres = $_SESSION ['nrpresta'];
-}
-
-$sql = "select * from usuarios where codigo = '$nrpres' and claves = '$clave'";
-$result = mysql_query ( $sql, $db );
-$row = mysql_fetch_array ( $result );
+$nrpres = $_SESSION ['nrpresta'];
 
 // me da el mes que corresponde al año anterior...
 function formatoPerido($per) {
