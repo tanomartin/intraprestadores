@@ -51,7 +51,7 @@ $dia = date ( "j" );
 $mes = date ( "m" );
 $anio = date ( "Y" );
 
-if ($dia < 15) {
+if ($dia < 10) {
 	$inicio = 2;
 	$fin = 7;
 } else {
@@ -89,13 +89,13 @@ for($i = $inicio; $i <= $fin; $i ++) {
 </head>
 <body>
 	<div class="container">
-		<h2 align="center">Menu Prestadores</h2>
-		<div class="row">
-			<div class="panel panel-default">
+		<div class="row" style="margin-top: 10px">
+			<div class="panel panel-primary">
 				<div class="panel-heading">
-					<h2 class="panel-title">Padrones</h2>
+					<div class="panel-heading" style="text-align: center; font-size: 25px">Menu Prestadores</div>
 				</div>
 				<div class="panel-body">
+					<h4>Noticias</h4>
 					<p>
 						<span style="color: green" class="glyphicon glyphicon-exclamation-sign "></span> 
 						Comunicamos que a partir de los padrones correspondientes a
@@ -118,10 +118,25 @@ for($i = $inicio; $i <= $fin; $i ++) {
 					</p>
 					<p>
 						<span style="color: green" class="glyphicon glyphicon-exclamation-sign "></span> 
+						Comunicamos que a partir de los padrones correspondintes a 
+						<b>Enero de 2017 (01/2017)</b> la descarga de los mismos estará disponibles a partir del día 10 de cada mes.
+					</p>
+					<hr>
+					<h4>Archivos Útiles</h4>
+					<p>
+						<span style="color: green" class="glyphicon glyphicon-exclamation-sign "></span> 
 						En el siguiente Link usted podr&aacute; descargar un archivo
 						comprimido que contiene ambas tablas codificadoras: <a
 							href="files/codificadoras.zip">Tablas Codificadoras </a>
 					</p>
+					<p>
+						<span style="color: green" class="glyphicon glyphicon-exclamation-sign "></span> 
+						En el siguiente Link usted podr&aacute; descargar un archivo
+						pdf donde se explica el contenido de cada columna de los padrones <a
+							href="files/referenciacolumnas.pdf" target="_blank">Referencia Columnas </a>
+					</p>
+					<hr>
+					<h4>Descarga de Padrones</h4>
 					<table class="table" style="text-align: center">
 						<thead>
 							<tr>
@@ -168,21 +183,18 @@ for($i = $inicio; $i <= $fin; $i ++) {
 						<?php	} ?>
 							</tbody>
 	 					 </table>
-    <?php if (($_SESSION ['nrpresta'] != "000") and ($_SESSION ['nrpresta'] != "999")) {
-					// update de la fecha y la hora
-					$pres = $_SESSION ['nrpresta'];
-					$hoy = date ( "Ymd" );
-					$hora = date ( "H:i:s" );
-					$sql9 = "UPDATE usuarios SET fecuac= '$hoy', horuac = '$hora' where codigo = $pres";
-					$result9 = mysql_query ( $sql9, $db );
-					?>
-					<div class="panel-footer" align="center">
-						<a href="logout.php" class="btn btn-info btn-lg">
-				          <span class="glyphicon glyphicon-log-out"></span> Salir
-				        </a>
-					</div>
-  <?php	} ?>
-			  </div>
+	 				</div>
+				    <?php if (($_SESSION ['nrpresta'] != "000") and ($_SESSION ['nrpresta'] != "999")) {
+						// update de la fecha y la hora
+						$pres = $_SESSION ['nrpresta'];
+						$hoy = date ( "Ymd" );
+						$hora = date ( "H:i:s" );
+						$sql9 = "UPDATE usuarios SET fecuac= '$hoy', horuac = '$hora' where codigo = $pres";
+						$result9 = mysql_query ( $sql9, $db ); ?>
+						<div class="panel-footer" align="center" style="background-color: #337ab7">
+							<a href="logout.php" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-log-out"></span> Salir</a>
+						</div>
+				  <?php	} ?>
 			</div>
 		</div>
   </div>
