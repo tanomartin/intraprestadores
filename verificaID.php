@@ -5,7 +5,9 @@ $sql = "select * from usuarios where codigo = '".$_POST['usuario']."' and claves
 $result = mysql_query($sql,$db);
 $cant = mysql_num_rows($result);
 if ($cant > 0) {
+	$row = mysql_fetch_assoc($result);
 	$_SESSION['nrpresta'] = $_POST['usuario'];
+	$_SESSION['nombre'] = $row['nombre'];
 }
 echo $cant;
 ?>

@@ -51,7 +51,7 @@ $dia = date ( "j" );
 $mes = date ( "m" );
 $anio = date ( "Y" );
 
-if ($dia < 10) {
+if ($dia < 15) {
 	$inicio = 2;
 	$fin = 7;
 } else {
@@ -92,7 +92,7 @@ for($i = $inicio; $i <= $fin; $i ++) {
 		<div class="row" style="margin-top: 10px">
 			<div class="panel panel-primary">
 				<div class="panel-heading">
-					<div class="panel-heading" style="text-align: center; font-size: 25px">Menu Prestadores</div>
+					<div class="panel-heading" style="text-align: center; font-size: 25px">Bienvenido - "<?php echo $_SESSION['nombre']  ?>"</div>
 				</div>
 				<div class="panel-body">
 					<h4>Noticias</h4>
