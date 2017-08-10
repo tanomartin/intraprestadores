@@ -184,17 +184,15 @@ for($i = $inicio; $i <= $fin; $i ++) {
 							</tbody>
 	 					 </table>
 	 				</div>
-				    <?php if (($_SESSION ['nrpresta'] != "000") and ($_SESSION ['nrpresta'] != "999")) {
-						// update de la fecha y la hora
-						$pres = $_SESSION ['nrpresta'];
-						$hoy = date ( "Ymd" );
-						$hora = date ( "H:i:s" );
-						$sql9 = "UPDATE usuarios SET fecuac= '$hoy', horuac = '$hora' where codigo = $pres";
-						$result9 = mysql_query ( $sql9, $db ); ?>
-						<div class="panel-footer" align="center" style="background-color: #337ab7">
-							<a href="logout.php" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-log-out"></span> Salir</a>
-						</div>
-				  <?php	} ?>
+				    <?php 	// update de la fecha y la hora
+							$pres = $_SESSION ['nrpresta'];
+							$hoy = date ( "Ymd" );
+							$hora = date ( "H:i:s" );
+							$sql9 = "UPDATE usuarios SET fecuac= '$hoy', horuac = '$hora' where codigo = $pres";
+							$result9 = mysql_query ( $sql9, $db ); ?>
+							<div class="panel-footer" align="center" style="background-color: #337ab7">
+								<a href="logout.php" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-log-out"></span> Salir</a>
+							</div>
 			</div>
 		</div>
   </div>
