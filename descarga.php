@@ -5,6 +5,7 @@ if($_SESSION['nrpresta'] == NULL) {
 } else {
 	include ("conexion.php");
 	$mes = $_GET['mes'];
+	$mes = str_pad($mes, 2, "0", STR_PAD_LEFT);
 	$anio = $_GET['anio'];
 	$pres = $_GET['pres'];
 	$quin = $_GET['quin'];
