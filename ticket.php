@@ -21,12 +21,13 @@ $mes = $_GET['mes'];
 $anio = $_GET['anio'];
 $fecd = $_GET['fecd'];
 $hord = $_GET['hord'];
+$quin = $_GET['quin'];
 $sql = "select * from usuarios where codigo = '$pres'";
 $result = mysql_query($sql,$db);
 $row=mysql_fetch_array($result); 
 $prestador=$row['nombre'];
 
-$sql1 = "select * from descarga where codigo = '$pres' and mespad='$mes' and anopad='$anio' and estdes='S';";
+$sql1 = "select * from descarga where codigo = '$pres' and mespad='$mes' and anopad='$anio' and quincena = $quin and estdes='S';";
 $result1 = mysql_query($sql1,$db);
 $cant = mysql_num_rows($result1);
 $cantProx = $cant+1;
@@ -42,9 +43,13 @@ $cantProx = $cant+1;
   </tr>
   <tr>
     <td height="70">
-	<form id="form1" name="form1" method="post" action="descarga.php?pres=<?php echo $pres."&mes=".$mes."&anio=".$anio ?>">
+	<form id="form1" name="form1" method="post" action="descarga.php?pres=<?php echo $pres."&mes=".$mes."&anio=".$anio."&quin=".$quin ?>">
       <p>PRESTADOR: <?php print($prestador); ?></p>
-      <p>PERIODO DEL PADRON DESCARGADO: <?php print($mes.'/'.$anio); ?></p>
+      <?php
+      	$cartel =  $mes.'/'.$anio;
+      	if ($quin != 0) { $cartel = $mes.'/'.$anio." - ".$quin."º Quincena"; }  
+      ?>
+      <p>PERIODO DEL PADRON DESCARGADO: <?php print($cartel); ?></p>
       <p>FECHA Y HORA DE DESCARGA: <?php print($fecd.' a las '.$hord. ' hrs.');  ?></p>
       <p>NUMERO DE DESCARGA: <?php print($cantProx); ?></p>
       <p align="center">

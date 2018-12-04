@@ -3,73 +3,9 @@ session_save_path ( "sesiones" );
 session_start ();
 if ($_SESSION ['nrpresta'] == NULL)
 	header ( "Location: index.php" );
-
 include ("conexion.php");
 $nrpres = $_SESSION ['nrpresta'];
-
-// me da el mes que corresponde al año anterior...
-function formatoPerido($per) {
-	if ($per == 1) {
-		return "01";
-	}
-	if ($per == 2) {
-		return "02";
-	}
-	if ($per == 3) {
-		return "03";
-	}
-	if ($per == 4) {
-		return "04";
-	}
-	if ($per == 5) {
-		return "05";
-	}
-	if (($per == 6) || ($per == - 6)) {
-		return "06";
-	}
-	if (($per == 7) || ($per == - 5)) {
-		return "07";
-	}
-	if (($per == 8) || ($per == - 4)) {
-		return "08";
-	}
-	if (($per == 9) || ($per == - 3)) {
-		return "09";
-	}
-	if (($per == 10) || ($per == - 2)) {
-		return "10";
-	}
-	if (($per == 11) || ($per == - 1)) {
-		return "11";
-	}
-	if (($per == 12) || ($per == 0)) {
-		return "12";
-	}
-}
-
-$dia = date ( "j" );
-$mes = date ( "m" );
-$anio = date ( "Y" );
-
-if ($dia < 15) {
-	$inicio = 2;
-	$fin = 7;
-} else {
-	$inicio = 1;
-	$fin = 6;
-}
-
-for($i = $inicio; $i <= $fin; $i ++) {
-	$perAux = $mes - $i;
-	if ($perAux <= 0) {
-		$anioArc [$i] = $anio - 1;
-		$mesArc [$i] = formatoPerido ( $perAux );
-	} else {
-		$anioArc [$i] = $anio;
-		$mesArc [$i] = formatoPerido ( $perAux );
-	}
-}
-
+$today = date ( "Y-m-d" );
 ?>
 
 <!DOCTYPE html>
@@ -98,28 +34,9 @@ for($i = $inicio; $i <= $fin; $i ++) {
 					<h4>Noticias</h4>
 					<p>
 						<span style="color: green" class="glyphicon glyphicon-exclamation-sign "></span> 
-						Comunicamos que a partir de los padrones correspondientes a
-						<b>Noviembre de 2014 (11/2014)</b> en el archivo excel que contiene la
-						información de beneficiarios titulares la columna "L" (código de
-						empresa) ya no contendrá esa información. Para identificar la
-						empresa donde trabajan los beneficiarios titulares deberá utilizar
-						sólo el C.U.I.T.</p>
-					<p>
-						<span style="color: green" class="glyphicon glyphicon-exclamation-sign "></span> 
-						Comunicamos que a partir de los padrones correspondintes a 
-						<b>Febrero de 2015 (02/2015)</b> en el archivo de
-						excel que contiene la informaci&oacute;n de beneficiarios
-						titulares en la columna &quot;I&quot; (provincia) se ha modificado
-						el dato conteniendo un c&oacute;digo en lugar del nombre. De igual
-						manera en el archivo de excel que contiene la informaci&oacute;n
-						de beneficiarios familiares en la columna &quot;B&quot; (tipo de
-						familiar) se ha modificado el dato conteniendo un c&oacute;digo en
-						lugar de la descripci&oacute;n.
-					</p>
-					<p>
-						<span style="color: green" class="glyphicon glyphicon-exclamation-sign "></span> 
-						Comunicamos que a partir de los padrones correspondintes a 
-						<b>Enero de 2017 (01/2017)</b> la descarga de los mismos estará disponibles a partir del día 10 de cada mes.
+						Ha sido modificada la frecuencia de publicación de los padrones de beneficiarios de mensual a quincenal.
+						Los mismos estarán activos para su descarga <b>los días 8 y 22 de cada mes</b> con los movimientos relacionados 
+						a la segunda quincena del mes anterior al mes en curso y a la primera quincena del mes en curso respectivamente.
 					</p>
 					<hr>
 					<h4>Archivos Útiles</h4>
@@ -140,44 +57,55 @@ for($i = $inicio; $i <= $fin; $i ++) {
 					<table class="table" style="text-align: center">
 						<thead>
 							<tr>
-								<th style="text-align: center">Per&iacute;odo</th>
+								<th style="text-align: center">Período</th>
+								<th style="text-align: center">Tipo</th>
 								<th style="text-align: center">Fecha de Subida</th>
 								<th style="text-align: center">Primera Descarga</th>
 								<th style="text-align: center">Descarga Padron</th>
 							</tr>
 						</thead>
 						<tbody>
-				    <?php for($i = $inicio; $i <= $fin; $i ++) {
+				    <?php 
+				    	$today = "2018-12-08";
+				   		$sqlPeriodos = "SELECT * FROM periodos WHERE disponible <= '$today' ORDER BY anopad DESC, mespad DESC, quincena DESC LIMIT 6";
+				   		$resPeriodos = mysql_query($sqlPeriodos,$db);
+				    	while($rowPeriodos = mysql_fetch_array($resPeriodos)) {
 									// para saber si pongo o no el link de descarga
 									$link = 0;
 									// datos de subida
-									$sql1 = "select * from subida where codigo = '$nrpres' and mespad='$mesArc[$i]' and anopad='$anioArc[$i]'";
+									$sql1 = "select * from subida where codigo = '$nrpres' and mespad=".$rowPeriodos['mespad']." and anopad = ".$rowPeriodos['anopad']." and quincena = ".$rowPeriodos['quincena'];
 									$result1 = mysql_query ( $sql1, $db );
-									$row1 = mysql_fetch_array ( $result1 );
 									if (mysql_num_rows ( $result1 ) == 0) {
 										$subida = "NO SUBIDO";
 										$link = 1;
 									} else {
+										$row1 = mysql_fetch_array ( $result1 );
 										$subida = $row1 ['fecsub'] . " // " . $row1 ['horsub'];
+										$quincena = $row1['quincena'];
 									}
 									
-									// datso de descarga
-									$sql2 = "select * from descarga where codigo = '$nrpres' and mespad='$mesArc[$i]' and anopad='$anioArc[$i]' and estdes='S' order by codigo, anopad, mespad, nrodes LIMIT 1";
+									// datos de descarga
+									$sql2 = "select * from descarga where codigo = '$nrpres' and mespad=".$rowPeriodos['mespad']." and anopad=".$rowPeriodos['anopad']." and quincena = ".$rowPeriodos['quincena']." and estdes='S' order by codigo, anopad, mespad, nrodes LIMIT 1";
 									$result2 = mysql_query ( $sql2, $db );
-									$row2 = mysql_fetch_array ( $result2 );
 									if (mysql_num_rows ( $result2 ) == 0) {
 										$descarga = "NUNCA";
 									} else {
+										$row2 = mysql_fetch_array ( $result2 );
 										$descarga = $row2 ['fecdes'] . " // " . $row2 ['hordes'];
 									} ?>
 									<tr>
-										<td><?php echo $mesArc [$i] . "/" . $anioArc [$i] ?></td>
+										<td><?php echo $rowPeriodos['mespad'] . "/" . $rowPeriodos['anopad'] ?></td>
+										<?php 
+										$infoQuin = "Mensual";
+										if ($rowPeriodos['quincena'] == 1) { $infoQuin =  "1era Quincena"; } 
+				    					if ($rowPeriodos['quincena'] == 2) { $infoQuin =  "2da Quincena"; }?>
+										<td><?php echo $infoQuin?></td>
 										<td><?php echo $subida ?></td>
 										<td><?php echo $descarga ?></td>
 							<?php		if ($link == 1) { ?>
 											<td></td>
 							<?php		} else { ?>
-											<td><a href="javascript:void(window.open('updateDescarga.php?pres=$nrpres&mes=<?php echo $mesArc[$i] ?>&anio=<?php echo $anioArc[$i] ?>'))"> <span title="Descasrgar" style="font-size: 25px" class="glyphicon glyphicon-download "></span> </a></td>
+											<td><a href="javascript:void(window.open('updateDescarga.php?pres=<?php echo $nrpres?>&mes=<?php echo $rowPeriodos['mespad'] ?>&anio=<?php echo $rowPeriodos['anopad'] ?>&quincena=<?php echo $rowPeriodos['quincena']?>'))"> <span title="Descasrgar" style="font-size: 25px" class="glyphicon glyphicon-download "></span> </a></td>
 							<?php		}  ?>
 									</tr>
 						<?php	} ?>
