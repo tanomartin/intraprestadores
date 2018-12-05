@@ -66,7 +66,6 @@ $today = date ( "Y-m-d" );
 						</thead>
 						<tbody>
 				    <?php 
-				    	$today = "2018-12-08";
 				   		$sqlPeriodos = "SELECT * FROM periodos WHERE disponible <= '$today' ORDER BY anopad DESC, mespad DESC, quincena DESC LIMIT 6";
 				   		$resPeriodos = mysql_query($sqlPeriodos,$db);
 				    	while($rowPeriodos = mysql_fetch_array($resPeriodos)) {
