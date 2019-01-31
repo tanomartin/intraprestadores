@@ -34,6 +34,12 @@ $today = date ( "Y-m-d" );
 					<h4>Noticias</h4>
 					<p>
 						<span style="color: green" class="glyphicon glyphicon-exclamation-sign "></span> 
+						<b>Información para los prestadores de Medicina.</b> En los archivos Excel que conforman los padrones de beneficiarios
+						se ha agregado una columna al final de la tabla para la identificación de los beneficiarios que pagan o no <b>coseguro</b>.
+						El dato es de tipo numérico, y los valores posibles son <b>0 (NO abona coseguro) y 1 (SI abona coseguro)</b>
+					</p>
+					<p>
+						<span style="color: green" class="glyphicon glyphicon-exclamation-sign "></span> 
 						Ha sido modificada la frecuencia de publicación de los padrones de beneficiarios de mensual a quincenal.
 						Los mismos estarán activos para su descarga <b>los días 8 y 22 de cada mes</b> con los movimientos relacionados 
 						a la segunda quincena del mes anterior al mes en curso y a la primera quincena del mes en curso respectivamente.
