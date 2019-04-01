@@ -44,19 +44,22 @@ $today = date ( "Y-m-d" );
 						Los mismos estarán activos para su descarga <b>los días 8 y 22 de cada mes</b> con los movimientos relacionados 
 						a la segunda quincena del mes anterior al mes en curso y a la primera quincena del mes en curso respectivamente.
 					</p>
+					<p>
+						<span style="color: green" class="glyphicon glyphicon-exclamation-sign "></span> 
+						<b>Ha sido agregada en los padrones</b>, archivo excel de beneficiarios titulares, una columna que contiene la información de 
+						<b>código postal y refiere a la columna "H"</b>. La primera publicación corresponderá al <b>Período 3/2019 - 2da Quincena.</b>
+					</p>
 					<hr>
 					<h4>Archivos Útiles</h4>
 					<p>
 						<span style="color: green" class="glyphicon glyphicon-exclamation-sign "></span> 
 						En el siguiente Link usted podr&aacute; descargar un archivo
-						comprimido que contiene ambas tablas codificadoras: <a
-							href="files/codificadoras.zip">Tablas Codificadoras </a>
+						comprimido que contiene ambas tablas codificadoras: <a href="files/codificadoras.zip">Tablas Codificadoras </a>
 					</p>
 					<p>
 						<span style="color: green" class="glyphicon glyphicon-exclamation-sign "></span> 
 						En el siguiente Link usted podr&aacute; descargar un archivo
-						pdf donde se explica el contenido de cada columna de los padrones <a
-							href="files/referenciacolumnas.pdf" target="_blank">Referencia Columnas </a>
+						pdf donde se explica el contenido de cada columna de los padrones <a href="files/referenciacolumnas.pdf" target="_blank">Referencia Columnas </a>
 					</p>
 					<hr>
 					<h4>Descarga de Padrones</h4>
