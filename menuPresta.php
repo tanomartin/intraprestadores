@@ -34,6 +34,12 @@ $today = date ( "Y-m-d" );
 					<h4>Noticias</h4>
 					<p>
 						<span style="color: green" class="glyphicon glyphicon-exclamation-sign "></span> 
+						<b> Cambio estructura de registro.</b> Ha sido agregada en los padrones, archivos excel de beneficiarios titulares y familiares, una columna que contiene 
+						la información de CUIL y refiere a la columna "O" e "I" respectivamente. Cualquier duda referirse al archivo de Referencia Columnas, en la seccion Archivos Útiles<br>
+						La primera publicación corresponderá al Período 4/2020 - 2da Quincena.
+					</p>
+					<p>
+						<span style="color: green" class="glyphicon glyphicon-exclamation-sign "></span> 
 						<b>Información para los prestadores de Medicina.</b> En los archivos Excel que conforman los padrones de beneficiarios
 						se ha agregado una columna al final de la tabla para la identificación de los beneficiarios que pagan o no <b>coseguro</b>.
 						El dato es de tipo numérico, y los valores posibles son <b>0 (NO abona coseguro) y 1 (SI abona coseguro)</b>
